@@ -1,0 +1,13 @@
+using System;
+
+namespace M.Simple.Services.DependencyInjection.Attributes
+{
+    /// <summary>
+    /// <para>M.Simple.Services.DependencyInjection 扩展</para>
+    /// <para>属性注入--自动注入特性</para>
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+    public class AutowiredAttribute : Attribute
+    {
+    }
+}

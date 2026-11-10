@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>M.Simple.Extensions.Chinese 功能包，从 M.Simple.Expand 1.0.1.8 拆分迁入。</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="PinYinConverterCore" Version="1.0.2" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,228 @@
+{
+  "sourceVersion": "1.0.1.8",
+  "files": [
+    {
+      "source": "Extensions/Extensions.Dictionary.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/DictionaryExtensions.cs",
+      "sourceSha256": "9612e48420d90a47938b559246d47e4160b659e045109a8265a6a9171699181c"
+    },
+    {
+      "source": "Extensions/Extensions.EntityCompare.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/EntityComparisonExtensions.cs",
+      "sourceSha256": "b293b6954dda34ed63befa8bedfcd9bc77225e28a09d87c99e3ff50541bf8411"
+    },
+    {
+      "source": "Extensions/Extensions.Enum.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/EnumExtensions.cs",
+      "sourceSha256": "836c2b8d1d4d8b9207703a5c874826c9097cceaa67d0f5b7f41e7f6509e6a505"
+    },
+    {
+      "source": "Extensions/Extensions.Guid.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/GuidExtensions.cs",
+      "sourceSha256": "fefa07dd471944bd9be6bf747a7acce1a90f72cd20dcc7e02ebaf3768fe92b53"
+    },
+    {
+      "source": "Extensions/Extensions.IList.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/CollectionExtensions.cs",
+      "sourceSha256": "10495b83c408b672998a532c11fc8dd16776575be24f739ef8aa18aa92af0ea1",
+      "additionalTargets": [
+        "src/Extensions/M.Simple.Extensions.DataTable/DataTableCollectionExtensions.cs"
+      ]
+    },
+    {
+      "source": "Extensions/Extensions.Money.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/MoneyExtensions.cs",
+      "sourceSha256": "291ffe968e81206a4f0eb0c9b8f9c972d16d65eeb02adcaa0b893bb27c29e413"
+    },
+    {
+      "source": "Comparers/FastAllPropertiesEqualityComparer.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Comparers/FastAllPropertiesEqualityComparer.cs",
+      "sourceSha256": "89916b97418be92b168e67c5053bb3b5187ed3a374df1872ef8fc11471dbf4f7"
+    },
+    {
+      "source": "Comparers/PropertyEqualityComparer.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Comparers/PropertyEqualityComparer.cs",
+      "sourceSha256": "ea9a2729719b990f77d13d3060973cfb66fcc5a6ac3e17233bf58c00a3bcbcbd"
+    },
+    {
+      "source": "Attributes/CompareValueAttribute.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Attributes/CompareValueAttribute.cs",
+      "sourceSha256": "7d4d2dea3fe260ce60f34754401cb19efac0a436e7f50d6985bd6e3d375a5c20"
+    },
+    {
+      "source": "Attributes/ModifyValueAttribute.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Attributes/ModifyValueAttribute.cs",
+      "sourceSha256": "6179a9367b784379a893504ac1a53e935ea50b9efbd63910f92088c274f72484"
+    },
+    {
+      "source": "Attributes/MyValidationAttribute.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Attributes/MyValidationAttribute.cs",
+      "sourceSha256": "cb67ce274d419d4d977ff710668532b4b803bc2c8f8e9efa81c0a81782513bd7"
+    },
+    {
+      "source": "Models/ComboBoxIntModel.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Models/ComboBoxIntModel.cs",
+      "sourceSha256": "46bc182ade567dcfc786c1b4e7a70b11367f9f0fde9616caca26f413463f666b"
+    },
+    {
+      "source": "Models/ComparesResults.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Models/ComparesResults.cs",
+      "sourceSha256": "16f7680991b8825c9c7fd99b6bffb56fc988c3d0203671dbbc2005b062c9d128"
+    },
+    {
+      "source": "Models/DateTimePeriod.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Models/DateTimePeriod.cs",
+      "sourceSha256": "cd38404351e4782fbe18dc1a6d2d8838081340424f10319b4bfa1b4407744f87"
+    },
+    {
+      "source": "Enums/DateTimeEnum.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Enums/DateTimeEnum.cs",
+      "sourceSha256": "19c4168c3cf7f195a1034ad318c20afb0bc156dd5e4c7b50cf9ed5d28d2c6280"
+    },
+    {
+      "source": "Enums/FormatMoneyEnum.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Enums/FormatMoneyEnum.cs",
+      "sourceSha256": "465ff6acf062cf1e44651ad233d8309eec864744ef3ea6d6e10c693e604d2bfd"
+    },
+    {
+      "source": "Enums/LanguageEnum.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Enums/LanguageEnum.cs",
+      "sourceSha256": "059d610a14b8adf7fb79cdff06c81a437fd1ff22c0774757f3e36440b0e25a72"
+    },
+    {
+      "source": "Helper/Public/SnowCodeGenerator.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Identifiers/SnowCodeGenerator.cs",
+      "sourceSha256": "a2242089a7596ce85b641b10264df7b773c21ffa6e52c282b7757dd2a90252dc"
+    },
+    {
+      "source": "Extensions/Extensions.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/LegacyExtensions.cs",
+      "sourceSha256": "f356c0090f94ce445511086d39ac6483102020560c79c65b644dc9f993a052aa"
+    },
+    {
+      "source": "Extensions/Extensions.String.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/StringExtensions.cs",
+      "sourceSha256": "db02f1a9c63add869871749220c42a2b30a0d749585808806ae382131cb1e0d7",
+      "additionalTargets": [
+        "src/Extensions/M.Simple.Extensions.Chinese/ChineseStringExtensions.cs"
+      ]
+    },
+    {
+      "source": "Extensions/Extensions.DateTime.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Core/Extensions/DateTimeExtensions.cs",
+      "sourceSha256": "0937d0a75bf3303b4e16de6e0fbb820d914d718e27e9c8d813224cc532f79ca6",
+      "additionalTargets": [
+        "src/Extensions/M.Simple.Extensions.Chinese/ChineseDateTimeExtensions.cs"
+      ]
+    },
+    {
+      "source": "Helper/ChineseCalendarHelper.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Chinese/Helpers/ChineseCalendarHelper.cs",
+      "sourceSha256": "76a8640cb5e43cec5f6a80ca7bc44383223bc8601a8f59f204add5c59744dab3"
+    },
+    {
+      "source": "Extensions/Extensions.DataTable.cs",
+      "target": "src/Extensions/M.Simple.Extensions.DataTable/DataTableExtensions.cs",
+      "sourceSha256": "f841ff7bc22ed74a63f819ff1e9446319e44cd5447f10c34cb48b5629adf9038"
+    },
+    {
+      "source": "Extensions/Extensions.Encrypt.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Cryptography/CryptographyExtensions.cs",
+      "sourceSha256": "0fdc9b45b34b001957f640cfbd8140dea4aa447e960e07e0067e384d7260ba41"
+    },
+    {
+      "source": "Models/AESEncryptResultModel.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Cryptography/Models/AESEncryptResultModel.cs",
+      "sourceSha256": "65e292d3696edf51b9aef27e1d66c51d5f3e7af5dc922f006a64a500d299edf8"
+    },
+    {
+      "source": "Helper/EncryptHelper.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Cryptography/Helpers/EncryptHelper.cs",
+      "sourceSha256": "cb4e21bc5a9e4a255d19785370a73a6d8408f59e567972ec5169208da3c041b7"
+    },
+    {
+      "source": "Extensions/Extensions.ConfigurationBuilder.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Configuration/ConfigurationBuilderExtensions.cs",
+      "sourceSha256": "09661beab573c94308a87fed7b121bffff961597172f42af8aefbba4d2be5670"
+    },
+    {
+      "source": "Helper/Public/AppSetting.cs",
+      "target": "src/Extensions/M.Simple.Extensions.Configuration/AppSetting.cs",
+      "sourceSha256": "0fefaad6be9c0c3fd67734b85fdae559d1c943c9325223adfea38e8ec6ad0d48"
+    },
+    {
+      "source": "Attributes/AppServiceAttribute.cs",
+      "target": "src/Services/M.Simple.Services.DependencyInjection/Attributes/AppServiceAttribute.cs",
+      "sourceSha256": "8b2c0b25025160bfe9195de3f74807cc0ae8aac7b7b563d4f85fd197eb4d1603"
+    },
+    {
+      "source": "Attributes/AutowiredAttribute.cs",
+      "target": "src/Services/M.Simple.Services.DependencyInjection/Attributes/AutowiredAttribute.cs",
+      "sourceSha256": "5a5151bb6509ec9b065771851b0566b852ca1678da4ba7d6b808b836849e49bb"
+    },
+    {
+      "source": "Services/AutowiredService.cs",
+      "target": "src/Services/M.Simple.Services.DependencyInjection/AutowiredService.cs",
+      "sourceSha256": "fca6e355d9b80817b49ad17c144f294d021a8a589165d143a17c3dc91ef8e093"
+    },
+    {
+      "source": "Extensions/Extensions.PropertyInjection.cs",
+      "targets": [
+        "src/Services/M.Simple.Services.DependencyInjection/ServiceCollectionExtensions.cs",
+        "src/Services/M.Simple.Services.Email/EmailServiceCollectionExtensions.cs",
+        "src/Services/M.Simple.Services.Ftp/FtpServiceCollectionExtensions.cs"
+      ],
+      "sourceSha256": "3ca0a6200015e8bbdf2d311248b6887aada9d6928c039794abcc9838be92b85e"
+    },
+    {
+      "source": "Services/EMailManager/EMailService.cs",
+      "target": "src/Services/M.Simple.Services.Email/EMailService.cs",
+      "sourceSha256": "6802a5107caf066f5513478234b907a6aa1f84b23fed092baf5a3f63b09b06d2"
+    },
+    {
+      "source": "Services/EMailManager/IEMailService.cs",
+      "target": "src/Services/M.Simple.Services.Email/IEMailService.cs",
+      "sourceSha256": "6aa775599a99c6b5cbde7567d51f8e657401334a33fa48b3f1281b08ec08754e"
+    },
+    {
+      "source": "Services/EMailManager/MailContent.cs",
+      "target": "src/Services/M.Simple.Services.Email/MailContent.cs",
+      "sourceSha256": "1115ba8494132a8a14cf96d504f37e73a2122a9b523e8dcc65395e923b938cdf"
+    },
+    {
+      "source": "Services/EMailManager/MailEnum.cs",
+      "target": "src/Services/M.Simple.Services.Email/MailEnum.cs",
+      "sourceSha256": "ddb6e4c63ed969e210a5c6061da4293d11ecb040ffe037a46c694e6a6bb85ad6"
+    },
+    {
+      "source": "Services/EMailManager/MailResult.cs",
+      "target": "src/Services/M.Simple.Services.Email/MailResult.cs",
+      "sourceSha256": "dc76ed42ad6b6b1d6bd00b45aad735a598e0a0c96fba7ac0d7ac65c5f941fb48"
+    },
+    {
+      "source": "Services/EMailManager/MailSettings.cs",
+      "target": "src/Services/M.Simple.Services.Email/MailSettings.cs",
+      "sourceSha256": "1b690d5e1c1b444a575817af6be0c5e8f4c23a4bb87b399049fb5d05f131a772"
+    },
+    {
+      "source": "Services/FtpClientManager/FtpClientService.cs",
+      "target": "src/Services/M.Simple.Services.Ftp/FtpClientService.cs",
+      "sourceSha256": "fe181b32379bac18cb26abed51fc58dc26a0cbbf561e75e5d5522133e456f0a2"
+    },
+    {
+      "source": "Services/FtpClientManager/FtpClientSettings.cs",
+      "target": "src/Services/M.Simple.Services.Ftp/FtpClientSettings.cs",
+      "sourceSha256": "7943d048926b296ec53074a1bf1f15c4299c3537336a2bb71e2d144062329e38"
+    },
+    {
+      "source": "Services/FtpClientManager/IFtpClientService.cs",
+      "target": "src/Services/M.Simple.Services.Ftp/IFtpClientService.cs",
+      "sourceSha256": "e5b3435ed567e2dd0d619f5bd8582e2c50a852928a238cb4b723a2785b6c88d3"
+    },
+    {
+      "source": "Helper/FtpClient.cs",
+      "target": "src/Services/M.Simple.Services.Ftp/Legacy/FtpClient.cs",
+      "sourceSha256": "e6e09dc15d5da13e74606d74c56890e6c99539d1f31623a001d7eaa7a2c625f7"
+    }
+  ]
+}

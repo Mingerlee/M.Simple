@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>M.Simple.Extensions.DataTable 功能包，从 M.Simple.Expand 1.0.1.8 拆分迁入。</Description>
+  </PropertyGroup>
+</Project>
