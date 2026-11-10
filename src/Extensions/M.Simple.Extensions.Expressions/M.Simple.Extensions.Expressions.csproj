@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>表达式条件组合与参数替换扩展。</Description>
+  </PropertyGroup>
+</Project>

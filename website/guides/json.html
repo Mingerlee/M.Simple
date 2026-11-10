@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="M.Simple 使用文档、API 说明与可运行示例"><title>JSON 序列化 · M.Simple</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head>
+<body data-root="../"><a class="skip-link" href="#main-content">跳到正文</a><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-icon">M.</span><span>M.Simple<small>开发者文档</small></span></a><div class="nav-scroll"><div class="nav-label">开始</div><a class="nav-item " href="../index.html" >文档首页</a><a class="nav-item " href="../quickstart.html" >快速开始</a><a class="nav-item " href="../samples.html" >运行示例</a><a class="nav-item " href="../sample-output.html" >示例运行结果</a><div class="nav-label">扩展方法 <span>08</span></div><a class="nav-item " href="../guides/core.html" >Core<small>基础扩展</small></a><a class="nav-item " href="../guides/chinese.html" >Chinese<small>中文工具</small></a><a class="nav-item " href="../guides/datatable.html" >DataTable<small>数据表转换</small></a><a class="nav-item " href="../guides/cryptography.html" >Cryptography<small>加解密</small></a><a class="nav-item " href="../guides/configuration.html" >Configuration<small>配置读取</small></a><a class="nav-item " href="../guides/expressions.html" >Expressions<small>表达式组合</small></a><a class="nav-item " href="../guides/database.html" >EntityFrameworkCore<small>数据库查询</small></a><a class="nav-item active" href="../guides/json.html" aria-current="page">Json<small>JSON 序列化</small></a><div class="nav-label">服务组件 <span>03</span></div><a class="nav-item " href="../guides/di.html" >DependencyInjection<small>依赖注入</small></a><a class="nav-item " href="../guides/email.html" >Email<small>邮件服务</small></a><a class="nav-item " href="../guides/ftp.html" >Ftp<small>FTP 服务</small></a><div class="nav-label">参考</div><a class="nav-item " href="../guides/bams.html" >BAMS 方法对照</a><a class="nav-item " href="../migration.html" >旧库迁移说明</a></div><div class="sidebar-footer"><span class="status-dot"></span>.NET 8 · v1.0.0</div></aside><div class="nav-backdrop" hidden></div><div class="workspace"><header class="topbar"><div class="topbar-left"><button class="menu-button" type="button" aria-label="切换导航" aria-controls="sidebar" aria-expanded="false">☰</button><span class="breadcrumb">文档<span>/</span>M.Simple.Extensions.Json</span></div><div class="topbar-actions"><button class="search-trigger" type="button"><span>搜索文档与 API</span><kbd>Ctrl K</kbd></button><a href="https://github.com/Mingerlee/M.Simple" target="_blank" rel="noopener" class="repository-link">GitHub ↗</a></div></header><div class="content-grid"><main id="main-content" class="document"><div class="document-label">M.Simple.Extensions.Json</div><h1 id="msimpleextensionsjsonjson-长整数">M.Simple.Extensions.Json：JSON 长整数</h1>
+<p>基于 System.Text.Json，无第三方依赖。适合将长整数标识序列化为字符串。</p>
+<p><a href="../quickstart.html">返回使用总览</a> · <a href="../downloads/source/samples/M.Simple.Samples/JsonExamples.cs.txt">可运行源文件</a> · <a href="../downloads/source/samples/M.Simple.Samples/Models.cs.txt">共享模型</a></p>
+<h2 id="安装与运行">安装与运行</h2>
+<div class="code-block"><div class="code-toolbar"><span>powershell</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="powershell">dotnet add package M.Simple.Extensions.Json --version 1.0.0</code></pre></div>
+<p>当前包尚未发布到公共包源，请先按<a href="../quickstart.html#安装本地包">本地安装说明</a>配置本地源。仓库内示例直接使用项目引用，在仓库根目录执行：</p>
+<div class="code-block"><div class="code-toolbar"><span>powershell</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="powershell">dotnet run --project samples/M.Simple.Samples --configuration Release -- json</code></pre></div>
+<h2 id="常用-api">常用 API</h2>
+<div class="table-scroll"><table><thead><tr><th>场景</th><th>API</th><th>说明</th></tr></thead><tbody><tr><td>注册</td><td>AddLongAsStringConverters</td><td>幂等添加 long 与 long? 转换器</td></tr><tr><td>非空</td><td>LongToStringConverter</td><td>写字符串；读整数或整数字符串</td></tr><tr><td>可空</td><td>NullableLongToStringConverter</td><td>另接受 null 与空字符串</td></tr></tbody></table></div>
+<h2 id="示例">示例</h2>
+<p>以下代码来自可运行项目；Product、OrderStatus、Verify 等共享类型见 Models.cs。Verify 仅用于示例自检，不属于包的公共 API。</p>
+<div class="code-block"><div class="code-toolbar"><span>csharp</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="csharp">using System.Text.Json;
+using M.Simple.Extensions.Json;
+
+namespace M.Simple.Samples;
+
+public static class JsonExamples
+{
+    public static void Run()
+    {
+        var options = new JsonSerializerOptions().AddLongAsStringConverters();
+        var json = JsonSerializer.Serialize(new { Uid = long.MaxValue, ParentUid = (long?)null }, options);
+        Verify.That(json.Contains(&quot;\&quot;9223372036854775807\&quot;&quot;), &quot;长整数未输出为字符串&quot;);
+        Verify.That(JsonSerializer.Deserialize&lt;long&gt;(&quot;\&quot;9223372036854775807\&quot;&quot;, options) == long.MaxValue, &quot;长整数读取失败&quot;);
+        Console.WriteLine(json);
+    }
+}</code></pre></div>
+<h2 id="使用边界">使用边界</h2>
+<p>非法、溢出、布尔或小数输入抛出 JsonException，不静默写成 0。long? 只把空字符串视为 null，空白字符串仍按整数解析规则处理。选项在首次使用后可能变成只读，需提前注册；同类转换器不重复添加，但已有其他转换器仍遵循 System.Text.Json 的选择顺序。</p>
+<p>ASP.NET Core MVC 可在 AddControllers().AddJsonOptions 回调中，对 options.JsonSerializerOptions 调用 AddLongAsStringConverters。Minimal API 使用其自己的 HTTP JSON 选项配置，不能假定 MVC 选项自动覆盖。</p><footer class="page-footer">M.Simple <span>扩展方法与服务组件使用文档</span><a href="../index.html">返回首页 ↑</a></footer></main><aside class="page-toc"><div>本页内容</div><a class="toc-level-2" href="#安装与运行">安装与运行</a><a class="toc-level-2" href="#常用-api">常用 API</a><a class="toc-level-2" href="#示例">示例</a><a class="toc-level-2" href="#使用边界">使用边界</a></aside></div></div><dialog class="search-dialog"><div class="search-dialog-header"><label class="sr-only" for="search-input">搜索文档</label><input id="search-input" placeholder="搜索方法名、包名或关键字…" autocomplete="off"><button class="close-search" type="button" aria-label="关闭搜索">Esc</button></div><div class="search-results" aria-live="polite"></div><div class="search-hint">输入关键字搜索全部文档 · 按 Esc 关闭</div></dialog><div class="toast" role="status" aria-live="polite"></div></body></html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="M.Simple 使用文档、API 说明与可运行示例"><title>基础扩展 · M.Simple</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head>
+<body data-root="../"><a class="skip-link" href="#main-content">跳到正文</a><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-icon">M.</span><span>M.Simple<small>开发者文档</small></span></a><div class="nav-scroll"><div class="nav-label">开始</div><a class="nav-item " href="../index.html" >文档首页</a><a class="nav-item " href="../quickstart.html" >快速开始</a><a class="nav-item " href="../samples.html" >运行示例</a><a class="nav-item " href="../sample-output.html" >示例运行结果</a><div class="nav-label">扩展方法 <span>08</span></div><a class="nav-item active" href="../guides/core.html" aria-current="page">Core<small>基础扩展</small></a><a class="nav-item " href="../guides/chinese.html" >Chinese<small>中文工具</small></a><a class="nav-item " href="../guides/datatable.html" >DataTable<small>数据表转换</small></a><a class="nav-item " href="../guides/cryptography.html" >Cryptography<small>加解密</small></a><a class="nav-item " href="../guides/configuration.html" >Configuration<small>配置读取</small></a><a class="nav-item " href="../guides/expressions.html" >Expressions<small>表达式组合</small></a><a class="nav-item " href="../guides/database.html" >EntityFrameworkCore<small>数据库查询</small></a><a class="nav-item " href="../guides/json.html" >Json<small>JSON 序列化</small></a><div class="nav-label">服务组件 <span>03</span></div><a class="nav-item " href="../guides/di.html" >DependencyInjection<small>依赖注入</small></a><a class="nav-item " href="../guides/email.html" >Email<small>邮件服务</small></a><a class="nav-item " href="../guides/ftp.html" >Ftp<small>FTP 服务</small></a><div class="nav-label">参考</div><a class="nav-item " href="../guides/bams.html" >BAMS 方法对照</a><a class="nav-item " href="../migration.html" >旧库迁移说明</a></div><div class="sidebar-footer"><span class="status-dot"></span>.NET 8 · v1.0.0</div></aside><div class="nav-backdrop" hidden></div><div class="workspace"><header class="topbar"><div class="topbar-left"><button class="menu-button" type="button" aria-label="切换导航" aria-controls="sidebar" aria-expanded="false">☰</button><span class="breadcrumb">文档<span>/</span>M.Simple.Extensions.Core</span></div><div class="topbar-actions"><button class="search-trigger" type="button"><span>搜索文档与 API</span><kbd>Ctrl K</kbd></button><a href="https://github.com/Mingerlee/M.Simple" target="_blank" rel="noopener" class="repository-link">GitHub ↗</a></div></header><div class="content-grid"><main id="main-content" class="document"><div class="document-label">M.Simple.Extensions.Core</div><h1 id="msimpleextensionscore基础扩展">M.Simple.Extensions.Core：基础扩展</h1>
+<p>无第三方依赖，提供字符串、日期、金额、集合、枚举、反射和实体比较。</p>
+<p><a href="../quickstart.html">返回使用总览</a> · <a href="../downloads/source/samples/M.Simple.Samples/CoreExamples.cs.txt">可运行源文件</a> · <a href="../downloads/source/samples/M.Simple.Samples/Models.cs.txt">共享模型</a></p>
+<h2 id="安装与运行">安装与运行</h2>
+<div class="code-block"><div class="code-toolbar"><span>powershell</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="powershell">dotnet add package M.Simple.Extensions.Core --version 1.0.0</code></pre></div>
+<p>当前包尚未发布到公共包源，请先按<a href="../quickstart.html#安装本地包">本地安装说明</a>配置本地源。仓库内示例直接使用项目引用，在仓库根目录执行：</p>
+<div class="code-block"><div class="code-toolbar"><span>powershell</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="powershell">dotnet run --project samples/M.Simple.Samples --configuration Release -- core</code></pre></div>
+<h2 id="常用-api">常用 API</h2>
+<div class="table-scroll"><table><thead><tr><th>场景</th><th>API</th><th>说明</th></tr></thead><tbody><tr><td>字符串</td><td>HasValue、ToFormatMatch、ToCover、ToDBC、ToSBC</td><td>空白检测、匹配文本归一化、掩码、全半角</td></tr><tr><td>日期</td><td>BeginOfMonth、EndOfMonth、BeginOfDay、EndOfDay</td><td>边界方法返回 Unspecified；结束精度为毫秒</td></tr><tr><td>月份</td><td>ParseMonthToDateTime、DiffMonths、DiffMonth</td><td>严格 yyyy-MM 解析；月份差是接收者减去参数</td></tr><tr><td>金额</td><td>ToRound、ToChinese、ToFormatMoney</td><td>ToRound 使用 AwayFromZero；中文金额仍属于 Core</td></tr><tr><td>集合</td><td>GroupBySelectFirst、GroupByThenSortTakeFirst、SplitBatch</td><td>分组首条、分组排序首条、分批</td></tr><tr><td>字典</td><td>ToDictionarySafe、ToDictionarys、Merge、MergeIgnore</td><td>ToDictionarySafe 重复键保留最后值；ToDictionarys 保留第一值</td></tr><tr><td>枚举</td><td>GetDescription、GetDisplayName、ToEnum、ToValueDescriptions</td><td>特性读取、转换、枚举字典</td></tr><tr><td>反射</td><td>GetPublicPropertyNames、ToDictionary、GetObjectPropertyValue</td><td>属性集合、对象转字典、忽略大小写取值</td></tr><tr><td>实体比较</td><td>CompareModel、IsModify、ModifyField</td><td>有 CompareValue/ModifyValue 特性的模式可选</td></tr><tr><td>比较器</td><td>PropertyEqualityComparer、FastAllPropertiesEqualityComparer</td><td>按指定属性或全部公共属性比较</td></tr><tr><td>其他</td><td>GetNextGuid、GetNoHyphenString、SnowCodeGenerator</td><td>旧版 GUID/编码辅助</td></tr></tbody></table></div>
+<h2 id="示例">示例</h2>
+<p>以下代码来自可运行项目；Product、OrderStatus、Verify 等共享类型见 Models.cs。Verify 仅用于示例自检，不属于包的公共 API。</p>
+<div class="code-block"><div class="code-toolbar"><span>csharp</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="csharp">using M.Simple.Extensions.Core;
+
+namespace M.Simple.Samples;
+
+public static class CoreExamples
+{
+    public static void Run()
+    {
+        // 匹配格式化与月份边界。
+        var normalized = &quot; （“样例”） &quot;.ToFormatMatch();
+        var month = &quot;2024-02&quot;.ParseMonthToDateTime();
+        Verify.That(normalized == &quot;(\&quot;样例\&quot;)&quot; &amp;&amp; month.EndOfMonth().Day == 29, &quot;格式或月份结果错误&quot;);
+        Console.WriteLine($&quot;匹配文本：{normalized}；月末：{month.EndOfMonth():yyyy-MM-dd HH:mm:ss.fff}&quot;);
+
+        // 分组默认保留第一条，安全字典默认保留最后一条。
+        var products = new[]
+        {
+            new Product { Id = 1, Name = &quot;原名称&quot;, Price = 12.345m },
+            new Product { Id = 1, Name = &quot;新名称&quot;, Price = 20m },
+            new Product { Id = 2, Name = &quot;另一产品&quot;, Price = 30m }
+        };
+        var first = products.GroupBySelectFirst(row =&gt; row.Id).ToArray();
+        var last = products.ToDictionarySafe(row =&gt; row.Id);
+        var batches = products.SplitBatch(2).Select(batch =&gt; batch.Count()).ToArray();
+        Verify.That(first[0].Name == &quot;原名称&quot; &amp;&amp; last[1].Name == &quot;新名称&quot;, &quot;重复键处理错误&quot;);
+        Console.WriteLine($&quot;分批：{string.Join(&#39;,&#39;, batches)}；金额：{12.345m.ToRound(2)}&quot;);
+
+        // 接收者是新值，第二个参数是旧值；只比较标记 CompareValue 的属性。
+        var changes = products[1].CompareModel(products[0], isAttr: true);
+        var fields = typeof(Product).GetPublicPropertyNames();
+        var dictionary = products[0].ToDictionary();
+        Verify.That(changes.Count == 2 &amp;&amp; fields.Contains(&quot;Name&quot;) &amp;&amp; dictionary.ContainsKey(&quot;name&quot;), &quot;比较或反射结果错误&quot;);
+        Console.WriteLine($&quot;变化字段：{string.Join(&#39;,&#39;, changes.Select(change =&gt; change.FiledName))}&quot;);
+        Console.WriteLine($&quot;枚举：{OrderStatus.Pending.GetDisplayName()}；属性：{products[0].GetObjectPropertyValue(&quot;NAME&quot;)}&quot;);
+    }
+}</code></pre></div>
+<h2 id="使用边界">使用边界</h2>
+<h3 id="返回值与边界">返回值与边界</h3>
+<ul><li><code>GroupBySelectFirst</code> 取输入顺序的第一条；需要“最新一条”时使用 <code>GroupByThenSortTakeFirst</code> 并提供排序字段。</li><li><code>ToDictionarySafe</code> 重复键保留最后一条；不要与 <code>ToDictionarys</code> 的第一条策略混用。</li><li><code>BeginOfMonth</code> 与 <code>GetFirstDayOfMonth</code> 等价；<code>EndOfMonth</code> 返回 23:59:59.999，<code>GetLastDayOfMonth</code> 返回零点。</li><li><code>ParseMonthToDateTime</code> 对非法格式抛出 FormatException；<code>EndOfDay(DateTime?)</code> 保留 null。</li><li><code>ToDictionary</code> 默认将键转为不变区域的小写；传 false 保留原名；跳过索引器与非公共 getter。</li><li><code>GetPublicPropertyNames</code> 保留属性原名；<code>GetObjectPropertyValue</code> 忽略大小写，缺失属性抛出 KeyNotFoundException。</li><li><code>CompareModel</code> 接收者为新值，参数为旧值；<code>isAttr: true</code> 只比较带 CompareValue 的属性。它比较标量属性的字符串表示，不是深度对象比较；默认不忽略审计字段。</li><li><code>IsOverlap</code> 当前会原地排序且不支持空集合；DateTimePeriod 相接不算重叠，DatePeriod 相接算重叠。</li><li><code>CollectionExtensions.TakeLast</code> 与 LINQ 同名，必要时使用完整类型名静态调用。</li><li>无特性的枚举显示方法当前可能返回空字符串；超出 Int32 的枚举值不要使用 ToInt32。</li><li>旧版 GetListHashCode 只是哈希值相加，不作为集合相等或持久化唯一性的依据。SnowCodeGenerator 的机器标识需在跨进程使用前核对。</li></ul>
+<p>实体比较、可空属性赋值等已知问题见<a href="../quickstart.html#已知限制">总览</a>。</p><footer class="page-footer">M.Simple <span>扩展方法与服务组件使用文档</span><a href="../index.html">返回首页 ↑</a></footer></main><aside class="page-toc"><div>本页内容</div><a class="toc-level-2" href="#安装与运行">安装与运行</a><a class="toc-level-2" href="#常用-api">常用 API</a><a class="toc-level-2" href="#示例">示例</a><a class="toc-level-2" href="#使用边界">使用边界</a><a class="toc-level-3" href="#返回值与边界">返回值与边界</a></aside></div></div><dialog class="search-dialog"><div class="search-dialog-header"><label class="sr-only" for="search-input">搜索文档</label><input id="search-input" placeholder="搜索方法名、包名或关键字…" autocomplete="off"><button class="close-search" type="button" aria-label="关闭搜索">Esc</button></div><div class="search-results" aria-live="polite"></div><div class="search-hint">输入关键字搜索全部文档 · 按 Esc 关闭</div></dialog><div class="toast" role="status" aria-live="polite"></div></body></html>
