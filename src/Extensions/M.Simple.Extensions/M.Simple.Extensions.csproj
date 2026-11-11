@@ -1,13 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Description>M.Simple 通用扩展方法：基础、中文、DataTable、加解密、配置、表达式、数据库与 JSON。</Description>
+    <Description>零第三方运行时依赖的 .NET 基础扩展：枚举、脱敏、集合与对象差异比较。</Description>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="PinYinConverterCore" Version="1.0.2" />
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.18" />
-    <PackageReference Include="Dapper" Version="2.1.35" />
-  </ItemGroup>
 </Project>

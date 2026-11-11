@@ -16,7 +16,7 @@
   function renderResults() {
     const query = input.value.trim().toLowerCase();
     results.replaceChildren();
-    if (!query) { const p = document.createElement('p'); p.className = 'search-empty'; p.textContent = '输入方法名或关键字，例如 EndOfDay、事务、Json。'; results.appendChild(p); return; }
+    if (!query) { const p = document.createElement('p'); p.className = 'search-empty'; p.textContent = '输入方法名或关键字，例如 MaskPhone、ToTree、Compare。'; results.appendChild(p); return; }
     const words = query.split(/\s+/);
     const matches = index.map(function (page) {
       const content = (page.title + ' ' + page.label + ' ' + page.text).toLowerCase();

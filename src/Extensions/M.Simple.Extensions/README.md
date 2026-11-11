@@ -1,13 +1,21 @@
 # M.Simple.Extensions
 
-统一扩展方法包，目标框架 .NET 8。包含 Core、Chinese、DataTable、Cryptography、Configuration、Expressions、EntityFrameworkCore、Json 八个功能目录。
+.NET 8 通用扩展，零第三方运行时依赖。版本：1.0.0-preview.1。
 
-安装：dotnet add package M.Simple.Extensions --version 1.0.0
+## 功能
 
-保留原有功能命名空间，例如 using M.Simple.Extensions.Core;、using M.Simple.Extensions.Chinese;。包名与程序集名为 M.Simple.Extensions，功能命名空间不等于独立 NuGet 包。
+- M.Simple.Extensions.Enums：GetDescription、EnumExtensions.GetOptions。
+- M.Simple.Extensions.Strings：Mask、MaskPhone、MaskEmail。
+- M.Simple.Extensions.Collections：DiffBy、ToTree。
+- M.Simple.Extensions.Comparison：ObjectComparison.Compare、ComparisonOptions。
 
-依赖：PinYinConverterCore、Microsoft.Extensions.Configuration 系列、EF Core Relational 和 Dapper；不依赖任何 M.Simple.Services 包，数据库驱动由宿主选择。
+## 示例
 
-从原八个扩展包迁移：删除旧包引用，安装此包并重新编译；现有 using 和方法调用可继续使用。不提供旧程序集的二进制兼容层。
+```csharp
+using M.Simple.Extensions.Strings;
+var phone = "13812345678".MaskPhone(); // 138****5678
+```
 
-[完整文档](../../../docs/usage.md) · [示例项目](../../../samples/M.Simple.Samples/README.md)
+Mask 长度不足时全部遮盖；ToTree 遇到重复键、孤儿和环路会抛异常；DiffBy 的内容相等判断可通过 IEqualityComparer 配置；对象比较是浅比较，默认 object.Equals，不递归处理引用对象。反射型 API 在裁剪、NativeAOT 环境下尚未验证。
+
+本版重新设计 API，不保证兼容旧包。完整中文手册随仓库 website 目录提供，可在本地站点 http://127.0.0.1:8090/ 阅读。公共 NuGet 源尚未发布。

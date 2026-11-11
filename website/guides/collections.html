@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="M.Simple 使用文档、API 说明与可运行示例"><title>集合 · M.Simple</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/site.css"><script defer src="../assets/search-index.js"></script><script defer src="../assets/site.js"></script></head>
+<body data-root="../"><a class="skip-link" href="#main-content">跳到正文</a><aside class="sidebar" id="sidebar"><a class="brand" href="../index.html"><span class="brand-icon">M.</span><span>M.Simple<small>开发者文档</small></span></a><div class="nav-scroll"><div class="nav-label">开始</div><a class="nav-item " href="../index.html">文档首页</a><a class="nav-item " href="../quickstart.html">快速开始</a><a class="nav-item " href="../samples.html">运行示例</a><a class="nav-item " href="../sample-output.html">示例运行结果</a><div class="nav-label">基础扩展 · 04</div><a class="nav-item " href="../guides/enums.html">枚举</a><a class="nav-item " href="../guides/strings.html">字符串脱敏</a><a class="nav-item active" href="../guides/collections.html" aria-current="page">集合</a><a class="nav-item " href="../guides/comparison.html">对象比较</a><div class="nav-label">参考</div><a class="nav-item " href="../migration.html">项目与版本说明</a><a class="nav-item " href="../publishing.html">本地站点发布</a></div><div class="sidebar-footer"><span class="status-dot"></span>.NET 8 · 1.0.0-preview.1</div></aside><div class="nav-backdrop" hidden></div><div class="workspace"><header class="topbar"><div class="topbar-left"><button class="menu-button" type="button" aria-label="切换导航" aria-controls="sidebar" aria-expanded="false">☰</button><span class="breadcrumb">文档<span>/</span>M.Simple.Extensions</span></div><div class="topbar-actions"><button class="search-trigger" type="button"><span>搜索文档与 API</span><kbd>Ctrl K</kbd></button><a href="https://github.com/Mingerlee/M.Simple" target="_blank" rel="noopener" class="repository-link">GitHub ↗</a></div></header><div class="content-grid"><main id="main-content" class="document"><div class="document-label">M.Simple.Extensions</div><h1 id="集合差异与树结构">集合差异与树结构</h1>
+<p>命名空间：M.Simple.Extensions.Collections。方法会立即枚举并生成只读结果，不修改输入对象。</p>
+<h2 id="按唯一键比较集合">按唯一键比较集合</h2>
+<div class="code-block"><div class="code-toolbar"><span>csharp</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="csharp">using M.Simple.Extensions.Collections;
+
+var before = new[] { new Item(1, 0, &quot;旧名称&quot;), new Item(2, 0, &quot;删除&quot;) };
+var after = new[] { new Item(1, 0, &quot;新名称&quot;), new Item(3, 1, &quot;新增&quot;) };
+var diff = before.DiffBy(after, item =&gt; item.Id);
+Console.WriteLine(diff.Added.Count);   // 1
+Console.WriteLine(diff.Updated.Count); // 1，包含 Before 和 After
+Console.WriteLine(diff.Removed.Count); // 1
+
+record Item(int Id, int ParentId, string Name);</code></pre></div>
+<p>DiffBy(before, after, keySelector, valueComparer = null, keyComparer = null) 以 after 为目标：新键为 Added、消失的键为 Removed、同键内容变化为 Updated。</p>
+<ul><li>keySelector 产生唯一且非 null 的键。任一集合有重复键时抛 ArgumentException，不自动选取某条记录。</li><li>内容默认使用 EqualityComparer&lt;T&gt;.Default。record 通常按值比较，普通 class 未重写 Equals 时按引用比较；可传入 IEqualityComparer&lt;T&gt; 定义业务内容相等。</li><li>keyComparer 可以指定大小写等键规则。两个比较器职责独立。</li><li>新增及修改按 after 顺序，删除按 before 顺序，当前实现使用 .NET 8 字典枚举顺序。</li><li>null 集合或委托抛 ArgumentNullException，空集合正常返回空结果。</li></ul>
+<h2 id="平铺数据转树">平铺数据转树</h2>
+<div class="code-block"><div class="code-toolbar"><span>csharp</span><button class="copy-button" type="button" aria-label="复制代码">复制代码</button></div><pre><code data-language="csharp">using M.Simple.Extensions.Collections;
+
+var rows = new[] { new Item(2, 1, &quot;子部门&quot;), new Item(1, 0, &quot;总部&quot;) };
+var tree = rows.ToTree(item =&gt; item.Id, item =&gt; item.ParentId, item =&gt; item.ParentId == 0);
+Console.WriteLine(tree[0].Value.Name);             // 总部
+Console.WriteLine(tree[0].Children[0].Value.Name); // 子部门
+
+record Item(int Id, int ParentId, string Name);</code></pre></div>
+<p>ToTree(source, keySelector, parentKeySelector, isRoot, keyComparer = null) 返回 IReadOnlyList&lt;TreeNode&lt;T&gt;&gt;。</p>
+<ul><li>根节点由 isRoot 显式判断，不预设 0、null 或 Guid.Empty 的含义。根节点不读取 parentKeySelector。</li><li>键必须唯一且非 null；非根节点的父键必须存在。不支持同一节点归属多个父节点。</li><li>重复键、孤儿、自环及与根不连通的循环分支均抛 ArgumentException。</li><li>支持父节点出现在子节点之后；根节点及兄弟节点保持输入顺序。</li><li>迭代构造树，避免深层树的递归栈溢出。</li><li>返回独立包装节点，Value 仍引用原始对象；只读列表不代表原始对象不可变。</li></ul><footer class="page-footer">M.Simple <span>零第三方运行时依赖的基础扩展手册</span><a href="../index.html">返回首页 ↑</a></footer></main><aside class="page-toc"><div>本页内容</div><a class="toc-level-2" href="#按唯一键比较集合">按唯一键比较集合</a><a class="toc-level-2" href="#平铺数据转树">平铺数据转树</a></aside></div></div><dialog class="search-dialog"><div class="search-dialog-header"><label class="sr-only" for="search-input">搜索文档</label><input id="search-input" placeholder="搜索方法名、包名或关键字…" autocomplete="off"><button class="close-search" type="button" aria-label="关闭搜索">Esc</button></div><div class="search-results" aria-live="polite"></div><div class="search-hint">输入关键字搜索全部文档 · 按 Esc 关闭</div></dialog><div class="toast" role="status" aria-live="polite"></div></body></html>
