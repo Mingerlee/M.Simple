@@ -1,5 +1,7 @@
 # M.Simple.Extensions.EntityFrameworkCore：EF Core 与 Dapper
 
+本页为统一包 `M.Simple.Extensions` 的功能分类，命名空间保留，安装时仅需引用统一扩展包。
+
 依赖 EF Core Relational 8.0.18、Dapper 2.1.35；不绑定业务实体或数据库驱动。
 
 [返回使用总览](../usage.md) · [可运行源文件](../../samples/M.Simple.Samples/DatabaseExamples.cs) · [共享模型](../../samples/M.Simple.Samples/Models.cs)
@@ -7,7 +9,7 @@
 ## 安装与运行
 
 ```powershell
-dotnet add package M.Simple.Extensions.EntityFrameworkCore --version 1.0.0
+dotnet add package M.Simple.Extensions --version 1.0.0
 ```
 
 当前包尚未发布到公共包源，请先按[本地安装说明](../usage.md#安装本地包)配置本地源。仓库内示例直接使用项目引用，在仓库根目录执行：

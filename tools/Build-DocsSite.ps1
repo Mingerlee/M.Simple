@@ -21,7 +21,7 @@ try {
         $sourceFiles += Get-ChildItem -LiteralPath (Join-Path $projectRoot $directory) -Recurse -File |
             Where-Object { $_.FullName -notmatch '[\\/](bin|obj|TestResults)[\\/]' }
     }
-    foreach ($file in @('README.md', '.gitignore', 'M.Simple.sln', 'Directory.Build.props', 'Directory.Build.targets', 'migration-map.json', 'website/assets/site.css', 'website/assets/site.js')) {
+    foreach ($file in @('README.md', '.gitignore', 'M.Simple.sln', 'Directory.Build.props', 'Directory.Build.targets', 'migration-map.json', 'website/README.md', 'website/assets/site.css', 'website/assets/site.js')) {
         $sourceFiles += Get-Item -LiteralPath (Join-Path $projectRoot $file)
     }
     foreach ($file in $sourceFiles) {

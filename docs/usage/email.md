@@ -1,6 +1,6 @@
 # M.Simple.Services.Email：邮件服务
 
-依赖 Core 和 DI Abstractions。可运行入口只注册并解析服务；SendAsync 方法供接入真实邮件配置后主动调用。
+依赖统一扩展包 M.Simple.Extensions 和 DI Abstractions。可运行入口只注册并解析服务；SendAsync 方法供接入真实邮件配置后主动调用。
 
 [返回使用总览](../usage.md) · [可运行源文件](../../samples/M.Simple.Samples/EmailExamples.cs) · [共享模型](../../samples/M.Simple.Samples/Models.cs)
 

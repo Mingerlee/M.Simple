@@ -6,6 +6,6 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../Extensions/M.Simple.Extensions.Core/M.Simple.Extensions.Core.csproj" />
+    <ProjectReference Include="../../Extensions/M.Simple.Extensions/M.Simple.Extensions.csproj" />
   </ItemGroup>
 </Project>

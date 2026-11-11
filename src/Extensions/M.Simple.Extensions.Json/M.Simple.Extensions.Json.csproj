@@ -1,5 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <Description>System.Text.Json 长整数转换与序列化选项扩展。</Description>
-  </PropertyGroup>
-</Project>

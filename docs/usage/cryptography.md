@@ -1,5 +1,7 @@
 # M.Simple.Extensions.Cryptography：加解密与摘要
 
+本页为统一包 `M.Simple.Extensions` 的功能分类，命名空间保留，安装时仅需引用统一扩展包。
+
 依赖 Core。示例只验证 AES/RSA 往返，不输出密钥。
 
 [返回使用总览](../usage.md) · [可运行源文件](../../samples/M.Simple.Samples/CryptographyExamples.cs) · [共享模型](../../samples/M.Simple.Samples/Models.cs)
@@ -7,7 +9,7 @@
 ## 安装与运行
 
 ```powershell
-dotnet add package M.Simple.Extensions.Cryptography --version 1.0.0
+dotnet add package M.Simple.Extensions --version 1.0.0
 ```
 
 当前包尚未发布到公共包源，请先按[本地安装说明](../usage.md#安装本地包)配置本地源。仓库内示例直接使用项目引用，在仓库根目录执行：

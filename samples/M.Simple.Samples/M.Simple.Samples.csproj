@@ -9,14 +9,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.18" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.Core/M.Simple.Extensions.Core.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.Chinese/M.Simple.Extensions.Chinese.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.DataTable/M.Simple.Extensions.DataTable.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.Cryptography/M.Simple.Extensions.Cryptography.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.Configuration/M.Simple.Extensions.Configuration.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.Expressions/M.Simple.Extensions.Expressions.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.EntityFrameworkCore/M.Simple.Extensions.EntityFrameworkCore.csproj" />
-    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions.Json/M.Simple.Extensions.Json.csproj" />
+    <ProjectReference Include="../../src/Extensions/M.Simple.Extensions/M.Simple.Extensions.csproj" />
     <ProjectReference Include="../../src/Services/M.Simple.Services.DependencyInjection/M.Simple.Services.DependencyInjection.csproj" />
     <ProjectReference Include="../../src/Services/M.Simple.Services.Email/M.Simple.Services.Email.csproj" />
     <ProjectReference Include="../../src/Services/M.Simple.Services.Ftp/M.Simple.Services.Ftp.csproj" />

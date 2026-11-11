@@ -6,31 +6,24 @@
 
 | 包 | 内容 | 依赖 |
 |---|---|---|
-| M.Simple.Extensions.Core | 字符串、集合、字典、枚举、Guid、日期、金额、实体比较、比较器、验证特性及原有雪花编码工具 | .NET |
-| M.Simple.Extensions.Chinese | 拼音、首字母、中文日期格式化、农历 | PinYinConverterCore |
-| M.Simple.Extensions.DataTable | DataTable 与集合互转、空值判断、筛选 | .NET |
-| M.Simple.Extensions.Cryptography | AES、RSA、MD5、签名、验签及返回模型 | Core |
-| M.Simple.Extensions.Configuration | 配置加载、路径处理、AppSetting | Microsoft.Extensions.Configuration 系列 |
-| M.Simple.Extensions.Expressions | 强类型 In、条件组合、参数替换 | .NET |
-| M.Simple.Extensions.EntityFrameworkCore | EF Core 与 Dapper 查询桥接、事务与取消透传 | EF Core Relational、Dapper |
-| M.Simple.Extensions.Json | long/long? 字符串转换与序列化选项注册 | .NET |
-| M.Simple.Services.DependencyInjection | AppService、Autowired 特性、服务扫描和属性装配 | DI Abstractions |
-| M.Simple.Services.Email | 邮件模型、发送服务、AddEMailSetup 注册扩展 | Core、DI Abstractions |
-| M.Simple.Services.Ftp | FTP 模型、传输服务、原 FtpClient 辅助类、AddFtpClientSetup 注册扩展 | DI Abstractions |
+| M.Simple.Extensions | 全部通用扩展：Core、Chinese、DataTable、Cryptography、Configuration、Expressions、EntityFrameworkCore、Json | PinYinConverterCore、Configuration 系列、EF Core Relational、Dapper |
+| M.Simple.Services.DependencyInjection | AppService、Autowired、服务扫描和属性装配 | DI Abstractions |
+| M.Simple.Services.Email | 邮件模型、发送服务与注册扩展 | M.Simple.Extensions、DI Abstractions |
+| M.Simple.Services.Ftp | FTP 模型、传输服务与注册扩展 | DI Abstractions |
 
-服务注册扩展随服务包提供，不放入通用依赖注入包。Core 不依赖中文、配置、DI 或其他服务包。DynamicQuery、Threading 暂未创建。
+共 4 个发布包：一个扩展包，三个独立服务包。服务注册扩展随各自服务包提供。扩展包内仍按八个功能目录组织，并保留原功能命名空间，不依赖任何服务包。
 
 ## 使用
 
 [静态文档网站与 IIS 挂载说明](website/README.md)：生成的网站文件位于 `website`，可直接由 IIS 托管。
 
-[完整使用文档](docs/usage.md)覆盖全部 11 个包的安装、API、示例和边界；[可运行示例项目](samples/M.Simple.Samples/README.md)可直接运行：
+[完整使用文档](docs/usage.md)覆盖全部 4 个包与 11 个示例场景的安装、API、示例和边界；[可运行示例项目](samples/M.Simple.Samples/README.md)可直接运行：
 
 ```powershell
 dotnet run --project samples/M.Simple.Samples --configuration Release -- all
 ```
 
-按需引用包，并导入其同名命名空间：
+安装统一扩展包及所需服务包，然后按功能导入命名空间：
 
 ```csharp
 using M.Simple.Extensions.Core;
@@ -41,9 +34,11 @@ var amount = 123.45m.ToChinese();
 var pinyin = "中文".ToPinYin();
 ```
 
-模型、枚举、特性分别位于对应包的 `.Models`、`.Enums`、`.Attributes` 命名空间；邮件、FTP 的模型和接口直接位于其服务包命名空间。
+模型、枚举、特性分别位于对应功能的 `.Models`、`.Enums`、`.Attributes` 命名空间；邮件、FTP 的模型和接口直接位于其服务包命名空间。
 
 ## 从旧包迁移
+
+原八个 M.Simple.Extensions.* 包的使用方应删除旧包引用，统一安装 M.Simple.Extensions，然后重新编译。功能命名空间与方法调用保持不变，程序集已合并，不提供旧程序集的二进制兼容层。
 
 - 本仓库不包含 BAMS 业务逻辑；新增通用扩展不修改 BAMS 源码和包引用。
 - 将 `using M.Simple.Expand` 改为实际使用的功能包命名空间；旧 `.Models`、`.Enums`、`.Attributes` 按所属功能调整。
@@ -58,7 +53,7 @@ var pinyin = "中文".ToPinYin();
 
 Core 新增 BeginOfMonth、EndOfMonth、BeginOfDay、EndOfDay（含可空重载）、ParseMonthToDateTime、DiffMonths、HasValue、ToFormatMatch、GetPublicPropertyNames、对象 ToDictionary、GetObjectPropertyValue。来源与行为差异见 [BAMS 方法对照](docs/bams-extensions.md)。
 
-Expressions、EntityFrameworkCore、Json 各自独立，避免 Core 引入数据库和序列化配置依赖。已有实体比较、集合、金额、拼音继续复用，不另建同义实现。
+所有通用扩展统一发布为 M.Simple.Extensions；配置、拼音和数据库依赖由该包统一携带，数据库驱动由宿主选择。已有实体比较、集合、金额、拼音继续复用。
 
 ## 构建与打包
 
@@ -70,7 +65,7 @@ dotnet pack M.Simple.sln --configuration Release --output artifacts/packages
 
 原有 30 项测试已迁入，另有依赖边界、配置、服务注册及 BAMS 通用扩展测试。数据库测试使用 SQLite 内存数据库；邮件和 FTP 测试只构造服务，不连接外部系统。旧源码的可空引用、过时 API 和 XML 文档警告保留可见。
 
-初次拆包时 34 项测试通过，原 8 个包通过独立项目引用验证。补充 BAMS 通用能力后，47 项测试通过，11 个包打包成功，详见 [验证结果](docs/bams-extensions.md#验证结果)。打包产物位于 `artifacts/packages`；尚未发布到包源。
+当前结构为 4 个 NuGet 包，保留 47 项测试及 11 个示例场景。打包产物位于 `artifacts/packages`；尚未发布到包源。
 
 ## 已知问题
 

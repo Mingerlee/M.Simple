@@ -1,6 +1,6 @@
 # M.Simple 可运行示例
 
-目标框架 .NET 8。项目通过 ProjectReference 引用当前仓库的 11 个功能包，此外使用 Microsoft.Extensions.DependencyInjection 9.0.2 和 Microsoft.EntityFrameworkCore.Sqlite 8.0.18。
+目标框架 .NET 8。项目通过 ProjectReference 引用当前仓库的 4 个功能包（一个统一扩展包及三个服务包），此外使用 Microsoft.Extensions.DependencyInjection 9.0.2 和 Microsoft.EntityFrameworkCore.Sqlite 8.0.18。
 
 从仓库根目录执行：
 

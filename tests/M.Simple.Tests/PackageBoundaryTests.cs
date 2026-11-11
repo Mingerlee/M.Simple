@@ -13,12 +13,15 @@ namespace M.Simple.Tests;
 public class PackageBoundaryTests
 {
     [TestMethod]
-    public void CoreDoesNotReferenceIntegrationPackages()
+    public void ExtensionsShareOneAssemblyAndDoNotReferenceServices()
     {
         var references = typeof(M.Simple.Extensions.Core.StringExtensions).Assembly.GetReferencedAssemblies();
         Assert.IsFalse(references.Any(reference => reference.Name.StartsWith("M.Simple.Services.")));
-        Assert.IsFalse(references.Any(reference => reference.Name.StartsWith("Microsoft.Extensions.")));
-        Assert.IsFalse(references.Any(reference => reference.Name.Contains("PinYin")));
+        var assembly = typeof(M.Simple.Extensions.Core.StringExtensions).Assembly;
+        Assert.AreEqual("M.Simple.Extensions", assembly.GetName().Name);
+        Assert.AreSame(assembly, typeof(M.Simple.Extensions.Json.LongToStringConverter).Assembly);
+        Assert.AreSame(assembly, typeof(M.Simple.Extensions.EntityFrameworkCore.DatabaseExtensions).Assembly);
+        Assert.AreSame(assembly, typeof(M.Simple.Extensions.Configuration.ConfigurationBuilderExtensions).Assembly);
     }
 
     [TestMethod]
